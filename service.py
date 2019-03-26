@@ -1,4 +1,4 @@
-from com.seguritech.position import Position
+from position import Position
 from flask import request
 from flask import Flask
 import json
