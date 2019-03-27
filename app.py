@@ -15,6 +15,7 @@ def api_root():
 @app.route('/service', methods = ['POST'])
 def set_position():
     content = request.get_json()
+    posicion.name = content['name']
     posicion.x = content['x']
     posicion.y = content['y']
     return "Set position"
@@ -22,6 +23,7 @@ def set_position():
 @app.route('/position', methods = ['GET'])
 def get_position():
     obj = {
+        "name": posicion.name,
         "x": posicion.x,
         "y": posicion.y
     }
