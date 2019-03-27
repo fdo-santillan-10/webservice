@@ -1,3 +1,4 @@
+from difference import Difference
 from position import Position
 from flask import request
 from flask import Flask
@@ -5,6 +6,7 @@ import json
 
 app = Flask(__name__)
 posicion = Position()
+diferencia = Difference()
 
 @app.route('/', methods = ['GET', 'POST'])
 def api_root():
@@ -22,6 +24,21 @@ def get_position():
     obj = {
         "x": posicion.x,
         "y": posicion.y
+    }
+    return json.dumps(obj)
+
+@app.route('/process', methods = ['POST'])
+def set_difference():
+    content = request.get_json()
+    diferencia.x = content['x']
+    diferencia.y = content['y']
+    return "Set difference"
+
+@app.route('/difference', methods = ['GET'])
+def get_difference():
+    obj = {
+        "difx": diferencia.x,
+        "dify": diferencia.y
     }
     return json.dumps(obj)
 
