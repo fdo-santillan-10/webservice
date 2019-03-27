@@ -30,8 +30,8 @@ def get_position():
 @app.route('/process', methods = ['POST'])
 def set_difference():
     content = request.get_json()
-    diferencia.x = content['x']
-    diferencia.y = content['y']
+    diferencia.x = content['difx']
+    diferencia.y = content['dify']
     return "Set difference"
 
 @app.route('/difference', methods = ['GET'])
