@@ -1,4 +1,5 @@
 from difference import Difference
+from movement import Movement
 from position import Position
 from flask import request
 from flask import Flask
@@ -6,6 +7,7 @@ import json
 
 app = Flask(__name__)
 posicion = Position()
+movement = Movement()
 diferencia = Difference()
 
 @app.route('/', methods = ['GET', 'POST'])
@@ -41,6 +43,23 @@ def get_difference():
     obj = {
         "difx": diferencia.x,
         "dify": diferencia.y
+    }
+    return json.dumps(obj)
+
+@app.route('/calculate', methods = ['POST'])
+def set_movement():
+    content = request.get_json()
+    movement.degrees = content['degrees']
+    movement.minutes = content['minutes']
+    movement.seconds = content['seconds']
+    return "Set movement"
+
+@app.route('/movement', methods = ['GET'])
+def get_movement():
+    obj = {
+        "degrees": movement.degrees,
+        "minutes": movement.minutes,
+        "seconds": movement.seconds
     }
     return json.dumps(obj)
 
