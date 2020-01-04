@@ -64,7 +64,7 @@ def get_movement():
     return json.dumps(obj)
 
 @app.route('/carbyne', methods = ['POST'])
-def set_difference():
+def get_object():
     content = request.get_json()
     return content
 
