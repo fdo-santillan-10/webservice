@@ -1,6 +1,7 @@
 from difference import Difference
 from movement import Movement
 from position import Position
+from flask import jsonify
 from flask import request
 from flask import Flask
 import json
@@ -63,10 +64,10 @@ def get_movement():
     }
     return json.dumps(obj)
 
-@app.route('/carbyne', methods = ['POST'])
-def get_object():
+@app.route('/json', methods = ['POST'])
+def get_json():
     content = request.get_json()
-    return "JSON"
+    return jsonify(content)
 
 if __name__ == '__main__':
     app.run()
