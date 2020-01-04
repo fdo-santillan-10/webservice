@@ -4,6 +4,7 @@ from position import Position
 from flask import jsonify
 from flask import request
 from flask import Flask
+import datetime
 import json
 
 app = Flask(__name__)
@@ -66,8 +67,13 @@ def get_movement():
 
 @app.route('/json', methods = ['POST'])
 def get_json():
+    #now = datetime.datetime.now()
     content = request.get_json()
-    return jsonify(content)
+    #nameFile = "Fullrecord-" + str(now).strip() + ".json"
+    #with open(nameFile, 'w') as outfile:
+    #    json.dump(content, outfile)
+    print(content)
+    return jsonify(content)    
 
 if __name__ == '__main__':
     app.run()
