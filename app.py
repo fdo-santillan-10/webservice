@@ -66,7 +66,7 @@ def get_movement():
 @app.route('/carbyne', methods = ['POST'])
 def get_object():
     content = request.get_json()
-    return content
+    return "JSON"
 
 if __name__ == '__main__':
     app.run()
