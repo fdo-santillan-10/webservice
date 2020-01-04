@@ -63,6 +63,11 @@ def get_movement():
     }
     return json.dumps(obj)
 
+@app.route('/carbyne', methods = ['POST'])
+def set_difference():
+    content = request.get_json()
+    return content
+
 if __name__ == '__main__':
     app.run()
     #app.run(debug=True, host='127.0.0.1', port=5000)
